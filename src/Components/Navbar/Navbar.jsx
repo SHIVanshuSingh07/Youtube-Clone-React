@@ -10,19 +10,21 @@ import profile_icon from "../../assets/jack.png";
 const Navbar = () => {
   return (
     <nav className="flex-div">
-      <div className="nav=left flex-div">
+      <div className="nav-left flex-div">
         <img className="menu-icon" src={menu_icon} alt="" />
         <img className="logo" src={logo} alt="" />
       </div>
       <div className="nav-middle flex">
-        <input type="text" placeholder="Search" />
-        <img src={search_icon} alt="" />
+        <div className="search-box flex-div">
+          <input type="text" placeholder="Search" />
+          <img src={search_icon} alt="" />
+        </div>
       </div>
       <div className="nav-right flex-div">
         <img src={upload_icon} alt="" />
         <img src={more_icon} alt="" />
         <img src={notification_icon} alt="" />
-        <img src={profile_icon} alt="" className='user-icon' />
+        <img src={profile_icon} alt="" className="user-icon" />
       </div>
     </nav>
   );
