@@ -110,8 +110,7 @@ const PlayVideo = ({ videoId }) => {
               Shivanshu Singh <span>2 days ago</span>
             </h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-              labore!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur obcaecati possimus harum.
             </p>
             <div className="comment-action">
               <img src={like} alt="" />
