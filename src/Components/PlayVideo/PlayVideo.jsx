@@ -31,7 +31,7 @@ const PlayVideo = ({ videoId }) => {
       .then(data => setChannelData(data.items[0]));
 
     // fetchingh comment data
-    const comment_url = ` https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key=${videoId}&key=${API_KEY}`;
+    const comment_url = ` https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&videoId=${videoId}&key=${API_KEY}`;
     await fetch(comment_url).then(res=>res.json()).then(data=>setCommentData(data.items));
   };
 
@@ -81,7 +81,6 @@ const PlayVideo = ({ videoId }) => {
       <div className="publisher">
         <img
           src={channelData ? channelData.snippet.thumbnails.default.url : ""}
-          alt=""
         />
         <div>
           <p>{apiData ? apiData.snippet.channelTitle : "Channel Name"}</p>
@@ -101,24 +100,30 @@ const PlayVideo = ({ videoId }) => {
         </p>
         <hr />
         <h4>
-          {apiData ? value_converter(apiData.statistics.commentCount) : 102}{" "} Comments</h4>
-
-          <div  className="comment">
-          <img src={user_profile} alt="" />
+          {apiData ? value_converter(apiData.statistics.commentCount) : 102} Comments</h4>
+          {
+            commentData.map((item,index)=>{
+              return(
+                <div key={index}  className="comment">
+          <img src={item.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="" />
           <div>
             <h3>
-              Shivanshu Singh <span>2 days ago</span>
+              {item.snippet.topLevelComment.snippet.authorDisplayName} <span>2 days ago</span>
             </h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur obcaecati possimus harum.
+            {item.snippet.topLevelComment.snippet.textDisplay}
             </p>
             <div className="comment-action">
               <img src={like} alt="" />
-              <span>412</span>
+              <span>{value_converter(item.snippet.topLevelComment.snippet.likeCount)}</span>
               <img src={dislike} alt="" />
             </div>
           </div>
         </div>
+              )
+            })
+          }
+          
         
       </div>
     </div>

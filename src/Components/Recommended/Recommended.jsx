@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Recommended.css'
 import thumbnail1 from "../../assets/thumbnail1.png";
 import thumbnail2 from "../../assets/thumbnail2.png";
@@ -11,7 +11,11 @@ import thumbnail8 from "../../assets/thumbnail8.png";
 
 
 
-const Recommended = () => {
+const Recommended = ({categoryId}) => {
+    const[apiData,setApiData] = useState([]);
+    const fetchData = async()=>{
+        // const relate
+    }
   return (
     <div className='recommended'>
         <div className="side-video-list">
